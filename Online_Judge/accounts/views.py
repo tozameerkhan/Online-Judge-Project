@@ -6,8 +6,6 @@ from django.template import loader
 from django.http import HttpResponse
 
 # Create your views here.
-
-
 def register_user(request):
 
     if request.method == 'POST':
