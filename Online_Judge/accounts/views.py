@@ -4,7 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.template import loader
 from django.http import HttpResponse
+
 # Create your views here.
+
 
 def register_user(request):
 
@@ -15,7 +17,7 @@ def register_user(request):
         user = User.objects.filter(username=username)
 
         if user.exists():
-            messages.info(request,'User with this username already exists')
+            messages.info(request, f'User with the username "{username}" already exists')
             return redirect("/auth/register/")
         
         user = User.objects.create_user(username=username)
@@ -24,7 +26,7 @@ def register_user(request):
 
         user.save()
         
-        messages.info(request,'User created successfully')
+        messages.info(request,f'User with username "{username}" created successfully.')
         return redirect('/auth/register/')
     
     template = loader.get_template('register.html')
@@ -39,7 +41,7 @@ def login_user(request):
         password = request.POST.get('password')
 
         if not User.objects.filter(username=username).exists():
-            messages.info(request,'User with this username does not exist')
+            messages.info(request,f'User with username "{username}" does not exist.')
             return redirect('/auth/login/')
         
         user = authenticate(username=username, password=password)
@@ -53,7 +55,6 @@ def login_user(request):
         #messages.info(request,'login successful')
 
         return redirect('/home/homepage/')
-        #return redirect('home:homepage')  # Assuming 'homepage' is the name of the URL pattern in 'home' app's urls.py
     
     template = loader.get_template('login.html')
     context ={}
