@@ -1,1 +1,7 @@
-myworld/
+ojenv/
+ojenv
+db.sqlite3
+migrations
+__pycache__
+.DS_Store
+zameer
