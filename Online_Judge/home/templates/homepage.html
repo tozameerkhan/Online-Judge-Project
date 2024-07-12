@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa; /* Light gray background */
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .card {
+      border: none; /* Remove default border */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+      background-color: #ffffff; /* White background */
+    }
+    h1 {
+      color: #28a745; /* Green color for heading */
+      font-weight: bold;
+    }
+    .btn-primary {
+      background-color: #28a745; /* Green button */
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Codify</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Messages</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/logout/">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card p-3 mb-3">
+          <h1>Welcome to Codify</h1>
+          <p class="lead">Codify is more than just a platform; it's a community of coders, learners, and problem solvers. Here, we celebrate the art and science of programming, providing a space where enthusiasts of all levels can hone their skills, compete, and collaborate. Join us to unlock your potential in the world of coding and algorithmic challenges..</p>
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="card p-3">
+          <h2>Latest Updates</h2>
+          <ul>
+            <li>Update Soon.</li>
+            <li>Update Soon.</li>
+            <li>Update Soon.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 mb-3">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Profile Settings</a></li>
+            <li><a href="#">Change Password</a></li>
+            <li><a href="#">Account Upgrade</a></li>
+          </ul>
+        </div>
+        <div class="card p-3">
+          <h3>Events</h3>
+          <ul>
+            <li>Event 1 - July 20, 2024</li>
+            <li>Event 2 - August 5, 2024</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

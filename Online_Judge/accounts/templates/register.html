@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS styles */
+    body {
+      background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+      background-size: cover; /* Ensures the background image covers the entire area */
+      background-position: center; /* Centers the background image */
+      background-repeat: no-repeat; /* Prevents the background image from repeating */
+      height: 100vh; /* Makes sure the background image covers the full viewport height */
+      position: relative;
+      background-color: rgba(248, 249, 250, 0.85); /* Light gray background with some transparency */
+    }
+    .card {
+      border: none; /* Remove default border */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+      background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+    }
+    h1 {
+      color: #28a745; /* Green color for heading */
+      font-weight: bold;
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    .btn-primary {
+      background-color: #28a745; /* Green button */
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container d-flex justify-content-center align-items-center h-100">
+    <!-- Registration form -->
+    <form class="col-md-6 card p-3" method="post"
+    enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- CSRF token for security -->
+
+      <!-- Registration form heading -->
+      <h1 style="text-align: center">
+        <span style="color: green">Codify</span>
+      </h1>
+      <h3 class="text-center">Register</h3>
+      <hr>
+
+      <!-- Display error/success messages -->
+      {% if messages %}
+      <div class="alert alert-primary" role="alert">
+        {% for message in messages %} 
+        {{ message }} 
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Username input field -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" required>
+      </div>
+
+      <!-- Password input field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+      </div>
+
+      <!-- Link to login page for users who already have an account -->
+      <p class="text-center">Already have an account? <a href="/auth/login/">Login</a></p>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
