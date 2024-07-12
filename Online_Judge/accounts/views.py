@@ -4,8 +4,36 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.template import loader
 from django.http import HttpResponse
-
+from userprofile.models import UserProfile
 # Create your views here.
+
+def register_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = User.objects.filter(username=username)
+
+        if user.exists():
+            messages.info(request, f'User with the username "{username}" already exists')
+            return redirect("/auth/register/")
+        
+        user = User.objects.create_user(username=username)
+        user.set_password(password)
+        user.save()
+
+        # Create a user profile with default values
+        UserProfile.objects.create(user=user)
+
+        messages.info(request, f'User with username "{username}" created successfully.')
+        return redirect('/auth/login/')
+    
+    template = loader.get_template('register.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+
+'''
 def register_user(request):
 
     if request.method == 'POST':
@@ -30,7 +58,7 @@ def register_user(request):
     template = loader.get_template('register.html')
     context = {}
     return HttpResponse(template.render(context,request))
-
+'''
 
 def login_user(request):
 
