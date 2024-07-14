@@ -22,11 +22,12 @@ def register_user(request):
         user.set_password(password)
         user.save()
 
-        # Create a user profile with default values
-        UserProfile.objects.create(user=user)
-
+        # Check if the user profile already exists
+        if not UserProfile.objects.filter(user=user).exists():
+            UserProfile.objects.create(user=user)
+        
         messages.info(request, f'User with username "{username}" created successfully.')
-        return redirect('/auth/login/')
+        return redirect('/auth/register/')
     
     template = loader.get_template('register.html')
     context = {}

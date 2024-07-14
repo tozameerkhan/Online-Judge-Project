@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <form class="col-md-6 mx-auto card p-3" method="post">
+            {% csrf_token %}
+            <h1 class="text-center mb-4">Update Profile</h1>
+            <hr>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" id="name" value="{{ user_profile.name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="date_of_birth">Date of Birth</label>
+                <input type="date" name="date_of_birth" class="form-control" id="date_of_birth" value="{{ user_profile.date_of_birth }}">
+            </div>
+
+            <div class="form-group">
+                <label for="college">College</label>
+                <input type="text" name="college" class="form-control" id="college" value="{{ user_profile.college }}">
+            </div>
+
+            <div class="form-group">
+                <label for="education">Education</label>
+                <input type="text" name="education" class="form-control" id="education" value="{{ user_profile.education }}">
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" name="city" class="form-control" id="city" value="{{ user_profile.city }}">
+            </div>
+
+            <div class="form-group">
+                <label for="problems_solved">Problems Solved</label>
+                <input type="number" name="problems_solved" class="form-control" id="problems_solved" value="{{ user_profile.problems_solved }}">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+        </form>
+    </div>
+</body>
+</html>
