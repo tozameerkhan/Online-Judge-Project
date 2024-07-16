@@ -44,10 +44,10 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="{% url 'userprofile:view_profile' %}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
+            <a class="nav-link" href="{% url 'problems:problem_list' %}">Problems Page</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -74,8 +74,8 @@
         <div class="card p-3">
           <h2>Latest Updates</h2>
           <ul>
-            <li>Update Soon.</li>
-            <li>Update Soon.</li>
+            <li><a href="{% url 'problems:create_problem' %}">Add a new Problem</a></li>
+            <li><a href="#">Update Soon</a></li>
             <li>Update Soon.</li>
           </ul>
         </div>
@@ -85,9 +85,9 @@
           <h3>Quick Links</h3>
           <ul>
             <!-- <li><a href="profile/update/">Profile Settings</a></li> -->
-            <li><a href="{% url 'userprofile:update_profile' %}">Profile Settings</a></li>
-            <li><a href="#">Change Password</a></li>
-            <li><a href="#">New </a></li>
+            <li><a href="{% url 'userprofile:view_profile' %}">Profile Settings</a></li>
+            <li><a href="{% url 'userprofile:update_password' %}">Change Password</a></li>
+            <li><a href="{% url 'problems:problem_list' %}">Problems Page </a></li>
           </ul>
         </div>
         <div class="card p-3">

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solve Problem</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #28a745; /* Green header */
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .problem-details {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            background-color: #808080;
+            color:white;
+        }
+        .code-editor {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .problem-details h3, .code-editor h3 {
+            margin-top: 20px;
+        }
+        .problem-details p {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-md-6 {
+            flex: 1;
+            min-width: 300px;
+        }
+        .form-group {
+            background-color: #c45c51;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>{{ problem.title }}</h1>
+                <p><strong>Created by:</strong> {{ problem.user.username }}</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 problem-details">
+                        <h3>Description</h3>
+                        <p>{{ problem.description }}</p>
+
+                        <h3>Constraints</h3>
+                        <p>{{ problem.constraints }}</p>
+
+                        <h3>Input</h3>
+                        <p>{{ problem.input_format }}</p>
+
+                        <h3>Output</h3>
+                        <p>{{ problem.output_format }}</p>
+                    </div>
+                    <div class="col-md-6 code-editor">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="code">Your Code:</label>
+                                <textarea id="code" name="code" rows="10" class="form-control">{{ user_code }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="user_input">Your Input (optional):</label>
+                                <textarea id="user_input" name="user_input" rows="3" class="form-control">{{ user_input }}</textarea>
+                            </div>
+                            <div class="form-groups">
+                                <button type="submit" class="btn btn-primary" name="action" value="run">Run</button>
+                                <button type="submit" class="btn btn-success" name="action" value="submit">Submit</button>
+                            </div>
+                        </form>
+
+                        {% if result %}
+                        <hr>
+                        <h3>Result</h3>
+                        <pre>{{ result }}</pre>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- Button to go back to the problem list page -->
+                <div class="text-center">
+                    <a href="{% url 'problems:problem_list' %}" class="btn btn-secondary mt-3">Back to Problem List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

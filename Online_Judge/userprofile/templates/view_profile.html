@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .container {
+            max-width: 800px; /* Limit form width for better readability */
+            margin-top: 80px; /* Adjusted margin for better placement */
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; /* White background */
+        }
+        .card-header {
+            background-color: #28a745; /* Green header */
+            color: white;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .card-body {
+            padding: 20px; /* Increased padding for better spacing */
+        }
+        .profile-box {
+            margin-bottom: 20px; /* Margin between profile sections */
+        }
+        label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #28a745; /* Green button */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="mb-0">View Profile</h1>
+            </div>
+            <div class="card-body">
+                <!-- Personal Information Section -->
+                <div class="profile-box">
+                    <h4 class="mb-3">Personal Information</h4>
+                    <div class="mb-3">
+                        <strong>Name:</strong> {{ user_profile.name }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Date of Birth:</strong> {{ user_profile.date_of_birth }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>College:</strong> {{ user_profile.college }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Education:</strong> {{ user_profile.education }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>City:</strong> {{ user_profile.city }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Problems Solved:</strong> {{ user_profile.problems_solved }}
+                    </div>
+                </div>
+
+                <!-- Add more profile sections as needed -->
+
+                <!-- Buttons Section -->
+                <div class="text-center">
+                    <a href="{% url 'userprofile:update_profile' %}" class="btn btn-primary mr-3">Update Profile</a>
+                    <a href="/home/homepage/" class="btn btn-secondary" style="background-color: #007bff; color: white;">Home</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

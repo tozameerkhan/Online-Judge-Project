@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem List</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card-header {
+            background-color: #28a745; /* Green header */
+            color: white;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .problem-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .problem-info {
+            flex: 1;
+        }
+        .problem-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .problem-author {
+            font-size: 0.9em;
+            color: #777;
+        }
+        .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+        .btn-custom {
+            min-width: 80px;
+        }
+        .btn-solve {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-solve:hover {
+            background-color: #0056b3;
+        }
+        .btn-update {
+            background-color: #ffc107;
+            border: none;
+        }
+        .btn-update:hover {
+            background-color: #e0a800;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            border: none;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+        .btn-homepage {
+            margin-top: 20px;
+            background-color: #28a745;
+            border: none;
+        }
+        .btn-homepage:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card-header">
+            <h1 class="text-center mb-4">List of Problems</h1>
+        </div>
+        <hr>
+        {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="list-group">
+            {% for problem in problems %}
+            <div class="problem-item list-group-item">
+                <div class="problem-info">
+                    <div class="problem-title">{{ problem.title }}</div>
+                    <div class="problem-author">Added by: {{ problem.user.username }}</div>
+                </div>
+                <div class="btn-group">
+                    <a href="{% url 'problems:solve_problem' problem.id %}" class="btn btn-custom btn-solve btn-sm">Solve</a>
+                    <a href="{% url 'problems:update_problem' problem.id %}" class="btn btn-custom btn-update btn-sm">Update</a>
+                    <a href="{% url 'problems:delete_problem' problem.id %}" class="btn btn-custom btn-delete btn-sm">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Link to homepage -->
+        <a href="/home/homepage/" class="btn btn-homepage btn-block mt-4">Go to Homepage</a>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
