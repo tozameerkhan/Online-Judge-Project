@@ -36,7 +36,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             background-color: #808080;
-            color:white;
+            color: white;
         }
         .code-editor {
             padding: 20px;
@@ -111,14 +111,18 @@
                         <form method="post">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label for="code">Your Code:</label>
-                                <textarea id="code" name="code" rows="10" class="form-control">{{ user_code }}</textarea>
+                                <label for="language">Select Language:</label>
+                                {{ form.language }}
                             </div>
                             <div class="form-group">
-                                <label for="user_input">Your Input (optional):</label>
-                                <textarea id="user_input" name="user_input" rows="3" class="form-control">{{ user_input }}</textarea>
+                                <label for="code">Your Code:</label>
+                                {{ form.code }}
                             </div>
-                            <div class="form-groups">
+                            <div class="form-group">
+                                <label for="input_data">Your Input (optional):</label>
+                                {{ form.input_data }}
+                            </div>
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-primary" name="action" value="run">Run</button>
                                 <button type="submit" class="btn btn-success" name="action" value="submit">Submit</button>
                             </div>

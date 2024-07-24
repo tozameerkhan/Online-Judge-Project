@@ -22,7 +22,7 @@ def register_user(request):
         user.set_password(password)
         user.save()
 
-        # Check if the user profile already exists
+        #Check if the user profile already exists
         if not UserProfile.objects.filter(user=user).exists():
             UserProfile.objects.create(user=user)
         

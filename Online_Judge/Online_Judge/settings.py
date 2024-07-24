@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'userprofile',
     'problems',
+    #'mycompiler',
 ]
 
 MIDDLEWARE = [

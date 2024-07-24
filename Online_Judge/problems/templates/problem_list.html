@@ -86,6 +86,7 @@
             <h1 class="text-center mb-4">List of Problems</h1>
         </div>
         <hr>
+        
         {% if messages %}
         <div class="container mt-3">
             {% for message in messages %}
@@ -105,6 +106,7 @@
                     <a href="{% url 'problems:solve_problem' problem.id %}" class="btn btn-custom btn-solve btn-sm">Solve</a>
                     <a href="{% url 'problems:update_problem' problem.id %}" class="btn btn-custom btn-update btn-sm">Update</a>
                     <a href="{% url 'problems:delete_problem' problem.id %}" class="btn btn-custom btn-delete btn-sm">Delete</a>
+                    <a href="{% url 'problems:view_test_cases' problem.id %}" class="btn btn-custom btn-delete btn-sm">View Test Case</a>
                 </div>
             </div>
             {% endfor %}

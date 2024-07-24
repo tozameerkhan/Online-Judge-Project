@@ -1,0 +1,50 @@
+<!-- view_test_cases.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Test Cases</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Test Cases for {{ problem.title }}</h2>
+            </div>
+            {% if messages %}
+            <div class="container mt-3">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for test_case in test_cases %}
+                    <li class="list-group-item">
+                        <p><strong>Input:</strong> {{ test_case.input_data }}</p>
+                        <p><strong>Expected Output:</strong> {{ test_case.output_data }}</p>
+                        <div class="btn-group">
+                            <a href="{% url 'problems:update_test_case' test_case.pk %}" class="btn btn-warning btn-sm">Update</a>
+                            <a href="{% url 'problems:delete_test_case' test_case.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div class="mt-3">
+                    <a href="{% url 'problems:add_test_case' problem.pk %}" class="btn btn-primary">Add New Test Case</a>
+                    <a href="{% url 'problems:problem_list' %}" class="btn btn-secondary ml-2">Back to Problem List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
