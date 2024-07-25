@@ -3,3 +3,5 @@ db.sqlite3
 migrations
 __pycache__
 .DS_Store
+AWSCLIV2.pkg
+keys

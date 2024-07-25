@@ -37,13 +37,21 @@
     .btn-primary:hover {
       background-color: #218838; /* Darker green on hover */
     }
+    /* Footer styling */
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 1.2rem;
+      color: #555;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="container d-flex justify-content-center align-items-center h-100">
     <!-- Registration form -->
-    <form class="col-md-6 card p-3" method="post"
-    enctype="multipart/form-data">
+    <form class="col-md-6 card p-3" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <!-- CSRF token for security -->
 
@@ -81,6 +89,11 @@
       <!-- Submit button -->
       <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Developed and Managed by Zameer Khan
   </div>
 
   <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
