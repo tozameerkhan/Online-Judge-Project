@@ -84,6 +84,7 @@
     <div class="container">
         <div class="card-header">
             <h1 class="text-center mb-4">List of Problems</h1>
+            <p class="text-center">User who added the problem can only update/delete. Others can only solve the problem.</p>
         </div>
         <hr>
         
@@ -106,7 +107,7 @@
                     <a href="{% url 'problems:solve_problem' problem.id %}" class="btn btn-custom btn-solve btn-sm">Solve</a>
                     <a href="{% url 'problems:update_problem' problem.id %}" class="btn btn-custom btn-update btn-sm">Update</a>
                     <a href="{% url 'problems:delete_problem' problem.id %}" class="btn btn-custom btn-delete btn-sm">Delete</a>
-                    <a href="{% url 'problems:view_test_cases' problem.id %}" class="btn btn-custom btn-delete btn-sm">View Test Case</a>
+                    <a href="{% url 'problems:view_test_cases' problem.id %}" class="btn btn-custom btn-delete btn-sm">Update TC</a>
                 </div>
             </div>
             {% endfor %}

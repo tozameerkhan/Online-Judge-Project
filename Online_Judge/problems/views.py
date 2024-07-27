@@ -173,6 +173,10 @@ def solve_problem(request, problem_id):
                         break
                 if all_passed:
                     result = 'All test cases passed!'
+                    # Increase the number of problems solved by the user
+                    user_profile = request.user.userprofile
+                    user_profile.problems_solved += 1
+                    user_profile.save()
 
     else:
         form = CodeSubmissionForm()

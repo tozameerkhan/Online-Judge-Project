@@ -5,3 +5,6 @@ __pycache__
 .DS_Store
 AWSCLIV2.pkg
 keys
+codes
+inputs
+outputs
