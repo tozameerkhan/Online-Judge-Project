@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-)%wn32x*=zr9hl_8=6lxlf2$k2g&8v+ci@4#lwnxmsqfifj@$5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["65.0.106.136", "65.0.106.136:8000", "127.0.0.1", "127.0.0.1:8000"]
+ALLOWED_HOSTS = ["3.111.79.62", "3.111.79.62:8000", "127.0.0.1", "127.0.0.1:8000", 'codifystudio.live', 'www.codifystudio.live']
 
+CSRF_TRUSTED_ORIGINS = ['https://www.codifystudio.live']
 
 # Application definition
 
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'userprofile',
     'problems',
-    #'mycompiler',
+    'welcomeapp',
 ]
 
 MIDDLEWARE = [

@@ -10,6 +10,7 @@ import uuid
 import subprocess
 from pathlib import Path
 from django.urls import reverse
+import os
 
 # Create your views here.
 @login_required
@@ -157,8 +158,12 @@ def solve_problem(request, problem_id):
             user_input = submission.input_data
             action = request.POST.get('action')
 
+
+            #Define the timeout value (e.g., 2 seconds)
+            timeout_value = 3
+
             if action == 'run':
-                    result = run_user_code(language, code, user_input)  #function to run code with user input
+                    result = run_user_code(language, code, user_input,timeout_value)  #function to run code with user input
 
             elif action == 'submit':
                 hidden_test_cases = TestCase.objects.filter(problem=problem)
@@ -166,7 +171,7 @@ def solve_problem(request, problem_id):
                 for test_case in hidden_test_cases:
                     expected_output = test_case.output_data
                     #messages.error(request, f'out {expected_output} and {test_case.input_data}' )
-                    actual_output = run_user_code(language, code, test_case.input_data)
+                    actual_output = run_user_code(language, code, test_case.input_dat,timeout_value)
                     if actual_output.strip() != expected_output.strip():
                         all_passed = False
                         result = f'Test case failed. For input: {test_case.input_data}. Expected: {expected_output}, but got: {actual_output}'
@@ -194,7 +199,7 @@ def solve_problem(request, problem_id):
 
 
 
-def run_user_code(language, code, input_data):
+def run_user_code(language, code, input_data, timeout):
     project_path = Path(settings.BASE_DIR)
     directories = ["codes", "inputs", "outputs"]
 
@@ -245,6 +250,8 @@ def run_user_code(language, code, input_data):
                             [str(executable_path)],
                             stdin=input_file,
                             stdout=output_file,
+                            timeout=timeout,  # Set timeout here
+                            stderr=subprocess.PIPE  # Capture stderr
                         )
         elif language == "py":
             with open(input_file_path, "r") as input_file:
@@ -254,19 +261,38 @@ def run_user_code(language, code, input_data):
                         stdin=input_file,
                         stdout=output_file,
                         stderr=subprocess.PIPE,  # Capture stderr
+                        timeout=timeout  # Set timeout here
                     )
                     if run_result.returncode != 0:
                         error_message = run_result.stderr.decode("utf-8").strip()
                         return f"Runtime Error:\n{error_message}"
-                    
+
+    except subprocess.TimeoutExpired:
+        return "Time Limit Exceeded (TLE)"                
     except subprocess.CalledProcessError as e:
         return f"Runtime Error:\n{e}"
 
-    # Read the output from the output file
+
+    finally:
+        # Read the output from the output file
+        with open(output_file_path, "r") as output_file:
+            output_data = output_file.read()
+        # Ensure the files are deleted after execution
+        if os.path.exists(code_file_path):
+            os.remove(code_file_path)
+        if os.path.exists(input_file_path):
+            os.remove(input_file_path)
+        if os.path.exists(output_file_path):
+            os.remove(output_file_path)
+        if language == "cpp" and os.path.exists(executable_path):
+            os.remove(executable_path)
+
+    return output_data
+    '''# Read the output from the output file
     with open(output_file_path, "r") as output_file:
         output_data = output_file.read()
 
-    return output_data
+    return output_data'''
 
 
 

@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from userprofile.models import UserProfile
 # Create your views here.
 
+
+app_name = 'accounts'
 def register_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')

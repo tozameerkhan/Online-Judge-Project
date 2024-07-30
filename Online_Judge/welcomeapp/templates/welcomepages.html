@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Codifyy</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/1435752/pexels-photo-1435752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            text-align: center;
+            height: 40vh;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #28a745;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .btn-primary, .btn-secondary {
+            font-size: 1.25rem;
+            padding: 0.75rem 1.5rem;
+            width: 100%;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+        }
+        .btn-primary {
+            background-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+        .btn-secondary {
+            background-color: #0f07a8;
+        }
+        .btn-secondary:hover {
+            background-color: #0d0694;
+        }
+        .footer {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+        color: #050000;
+        font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Welcome to Codify</h1>
+        <p>Please sign up or log in to continue.</p>
+        <a href="{% url 'accounts:register-users' %}" class="btn btn-primary">Sign Up</a>
+        <a href="{% url 'accounts:login-user' %}" class="btn btn-secondary">Log In</a>
+    </div>
+
+    <!-- Footer -->
+  <div class="footer">
+    Developed and Managed by Zameer Khan
+  </div>
+  
+    <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
